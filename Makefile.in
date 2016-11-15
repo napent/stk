@@ -4,6 +4,9 @@ RM = /bin/rm
 
 REALTIME = @realtime@
 
+lib :
+	cd src && $(MAKE)
+	
 all :
 	cd src && $(MAKE)
 	cd projects/demo && $(MAKE) libdemo
