@@ -1,3 +1,22 @@
+##ALAM MODIFICATIONS
+	1.clenup in libm functions, #include added to stk.h, added custom hooks with "_" prefix
+	2.cflags passed to gcc, "make lib" build recipe added
+	3.eclipse launchers added for x64 and raspberry pi build
+	
+# important
+	1. for cross compiling you need to add two enviroment variables to eclipse global properties
+		a) SYSROOT - replace alax with your user
+		/home/alax/rpi/gcc-linaro-5.3.1-2016.05-rc2-x86_64_arm-linux-gnueabihf/arm-linux-gnueabihf/libc
+		
+		b) PATH
+			${SYSROOT}/../../bin:${PATH}
+			
+	2. lib alsa has to be extracted to SYSROOT from dep package copied from raspi
+
+
+
+
+
 # The Synthesis ToolKit in C++ (STK)
 By Perry R. Cook and Gary P. Scavone, 1995--2016.
 
