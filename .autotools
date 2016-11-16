@@ -48,9 +48,9 @@
 <option id="no-create" value="false"/>
 <option id="quiet" value="false"/>
 <option id="version" value="false"/>
-<option id="host" value="x86_64-linux-gnu"/>
-<option id="build" value="arm-linux-gnueabihf"/>
-<option id="target" value="x86_64-linux-gnu"/>
+<option id="host" value="arm-linux-gnueabihf"/>
+<option id="build" value="x86_64-linux-gnu"/>
+<option id="target" value="arm-linux-gnueabihf"/>
 <option id="prefix" value="/usr"/>
 <option id="exec-prefix" value=""/>
 <option id="libdir" value=""/>
