@@ -625,6 +625,11 @@ inline StkFloat _fmod(StkFloat in,StkFloat in2)
 	return std::fmod(in,in2);
 }
 
+inline StkFloat _abs(StkFloat in)
+{
+	return std::abs(in);
+}
+
 inline StkFloat _fabs(StkFloat in)
 {
 	return std::fabs(in);

@@ -31,7 +31,7 @@ OnePole :: ~OnePole()
 
 void OnePole :: setPole( StkFloat thePole )
 {
-  if ( abs( thePole ) >= 1.0 ) {
+  if ( _abs( thePole ) >= 1.0 ) {
     oStream_ << "OnePole::setPole: argument (" << thePole << ") should be less than 1.0!";
     handleError( StkError::WARNING ); return;
   }
@@ -47,7 +47,7 @@ void OnePole :: setPole( StkFloat thePole )
 
 void OnePole :: setCoefficients( StkFloat b0, StkFloat a1, bool clearState )
 {
-  if ( abs( a1 ) >= 1.0 ) {
+  if ( _abs( a1 ) >= 1.0 ) {
     oStream_ << "OnePole::setCoefficients: a1 argument (" << a1 << ") should be less than 1.0!";
     handleError( StkError::WARNING ); return;
   }
