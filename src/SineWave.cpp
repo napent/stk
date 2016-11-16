@@ -14,7 +14,6 @@
 /***************************************************/
 
 #include "SineWave.h"
-#include <cmath>
 
 namespace stk {
 
@@ -27,7 +26,7 @@ SineWave :: SineWave( void )
     table_.resize( TABLE_SIZE + 1, 1 );
     StkFloat temp = 1.0 / TABLE_SIZE;
     for ( unsigned long i=0; i<=TABLE_SIZE; i++ )
-      table_[i] = sin( TWO_PI * i * temp );
+      table_[i] = _sin( TWO_PI * i * temp );
   }
 
   Stk::addSampleRateAlert( this );

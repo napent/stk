@@ -11,7 +11,6 @@
 /***************************************************/
 
 #include "OneZero.h"
-#include <cmath>
 
 namespace stk {
 

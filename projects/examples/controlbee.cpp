@@ -4,7 +4,6 @@
 #include "RtAudio.h"
 #include "Messager.h"
 #include "SKINImsg.h"
-#include <math.h>
 #include <algorithm>
 using std::min;
 
@@ -53,7 +52,7 @@ void processMessage( TickData* data )
     if ( value2 == 0.0 ) // velocity is zero ... really a NoteOff
       data->instrument->noteOff( 0.5 );
     else { // a NoteOn
-      StkFloat frequency = 220.0 * pow( 2.0, (value1 - 57.0) / 12.0 ); 
+      StkFloat frequency = 220.0 * _pow( 2.0, (value1 - 57.0) / 12.0 ); 
       data->instrument->noteOn( frequency, value2 * ONE_OVER_128 );
     }
     break;

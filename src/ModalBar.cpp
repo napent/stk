@@ -30,7 +30,6 @@
 
 #include "ModalBar.h"
 #include "SKINImsg.h"
-#include <cmath>
 
 namespace stk {
 
@@ -58,7 +57,7 @@ void ModalBar :: setStickHardness( StkFloat hardness )
   }
 
   stickHardness_ = hardness;
-  wave_->setRate( (0.25 * pow(4.0, stickHardness_) ) );
+  wave_->setRate( (0.25 * _pow(4.0, stickHardness_) ) );
   masterGain_ = 0.1 + (1.8 * stickHardness_);
 }
 
@@ -73,13 +72,13 @@ void ModalBar :: setStrikePosition( StkFloat position )
 
   // Hack only first three modes.
   StkFloat temp2 = position * PI;
-  StkFloat temp = sin(temp2);                                       
+  StkFloat temp = _sin(temp2);                                       
   this->setModeGain(0, 0.12 * temp);
 
-  temp = sin(0.05 + (3.9 * temp2));
+  temp = _sin(0.05 + (3.9 * temp2));
   this->setModeGain(1, -0.03 * temp);
 
-  temp = sin(-0.05 + (11 * temp2));
+  temp = _sin(-0.05 + (11 * temp2));
   this->setModeGain(2, 0.11 * temp);
 }
 

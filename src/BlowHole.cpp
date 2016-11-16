@@ -35,7 +35,6 @@
 
 #include "BlowHole.h"
 #include "SKINImsg.h"
-#include <cmath>
 
 namespace stk {
 
@@ -61,7 +60,7 @@ BlowHole :: BlowHole( StkFloat lowestFrequency )
   // Calculate the initial tonehole three-port scattering coefficient
   StkFloat rb = 0.0075;    // main bore radius
   StkFloat rth = 0.003;    // tonehole radius
-  scatter_ = -pow(rth,2) / ( pow(rth,2) + 2*pow(rb,2) );
+  scatter_ = -_pow(rth,2) / ( _pow(rth,2) + 2*_pow(rb,2) );
 
   // Calculate tonehole coefficients and set for initially open.
   StkFloat te = 1.4 * rth;    // effective length of the open hole
@@ -74,8 +73,8 @@ BlowHole :: BlowHole( StkFloat lowestFrequency )
   double r_rh = 0.0015;    // register vent radius
   te = 1.4 * r_rh;         // effective length of the open hole
   double xi = 0.0;         // series resistance term
-  double zeta = 347.23 + 2*PI*pow(rb,2)*xi/1.1769;
-  double psi = 2*PI*pow(rb,2)*te / (PI*pow(r_rh,2));
+  double zeta = 347.23 + 2*PI*_pow(rb,2)*xi/1.1769;
+  double psi = 2*PI*_pow(rb,2)*te / (PI*_pow(r_rh,2));
   StkFloat rhCoeff = (zeta - 2 * Stk::sampleRate() * psi) / (zeta + 2 * Stk::sampleRate() * psi);
   rhGain_ = -347.23 / (zeta + 2 * Stk::sampleRate() * psi);
   vent_.setA1( rhCoeff );

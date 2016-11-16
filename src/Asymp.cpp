@@ -24,7 +24,6 @@
 /***************************************************/
 
 #include "Asymp.h"
-#include <cmath>
 
 namespace stk {
 
@@ -33,7 +32,7 @@ Asymp :: Asymp( void )
   value_ = 0.0;
   target_ = 0.0;
   state_ = 0;
-  factor_ = exp( -1.0 / ( 0.3 * Stk::sampleRate() ) );
+  factor_ = _exp( -1.0 / ( 0.3 * Stk::sampleRate() ) );
   constant_ = 0.0;
   Stk::addSampleRateAlert( this );
 }
@@ -46,8 +45,8 @@ Asymp :: ~Asymp( void )
 void Asymp :: sampleRateChanged( StkFloat newRate, StkFloat oldRate )
 {
   if ( !ignoreSampleRateChange_ ) {
-    StkFloat tau = -1.0 / ( std::log( factor_ ) * oldRate );
-    factor_ = std::exp( -1.0 / ( tau * newRate ) );
+    StkFloat tau = -1.0 / ( _log( factor_ ) * oldRate );
+    factor_ = _exp( -1.0 / ( tau * newRate ) );
   }
 }
 
@@ -68,7 +67,7 @@ void Asymp :: setTau( StkFloat tau )
     handleError( StkError::WARNING ); return;
   }
 
-  factor_ = std::exp( -1.0 / ( tau * Stk::sampleRate() ) );
+  factor_ = _exp( -1.0 / ( tau * Stk::sampleRate() ) );
   constant_ = ( 1.0 - factor_ ) * target_;
 }
 
@@ -79,8 +78,8 @@ void Asymp :: setTime( StkFloat time )
     handleError( StkError::WARNING ); return;
   }
 
-  StkFloat tau = -time / std::log( TARGET_THRESHOLD );
-  factor_ = std::exp( -1.0 / ( tau * Stk::sampleRate() ) );
+  StkFloat tau = -time / _log( TARGET_THRESHOLD );
+  factor_ = _exp( -1.0 / ( tau * Stk::sampleRate() ) );
   constant_ = ( 1.0 - factor_ ) * target_;
 }
 

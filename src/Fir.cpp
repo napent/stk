@@ -21,7 +21,6 @@
 /***************************************************/
 
 #include "Fir.h"
-#include <cmath>
 
 namespace stk {
 

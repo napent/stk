@@ -22,7 +22,6 @@
 #include <signal.h>
 #include <iostream>
 #include <algorithm>
-#include <cmath>
 using std::min;
 
 bool done;
@@ -104,7 +103,7 @@ void processMessage( TickData* data )
     else if (value1 == 52.0) {
       data->frequency += ( data->message.intValues[1] << 7 );
       // Convert to a fractional MIDI note value
-      StkFloat note = 12.0 * log( data->frequency / 220.0 ) / log( 2.0 ) + 57.0;
+      StkFloat note = 12.0 * _log( data->frequency / 220.0 ) / _log( 2.0 ) + 57.0;
       data->voicer->setFrequency( note );
     }
     else

@@ -2,7 +2,6 @@
 #define STK_BLIT_H
 
 #include "Generator.h"
-#include <cmath>
 #include <limits>
 
 namespace stk {
@@ -114,11 +113,11 @@ inline StkFloat Blit :: tick( void )
 
   // Avoid a divide by zero at the sinc peak, which has a limiting
   // value of 1.0.
-  StkFloat tmp, denominator = sin( phase_ );
+  StkFloat tmp, denominator = _sin( phase_ );
   if ( denominator <= std::numeric_limits<StkFloat>::epsilon() )
     tmp = 1.0;
   else {
-    tmp =  sin( m_ * phase_ );
+    tmp =  _sin( m_ * phase_ );
     tmp /= m_ * denominator;
   }
 

@@ -68,7 +68,7 @@ void Blit :: setHarmonics( unsigned int nHarmonics )
 void Blit :: updateHarmonics( void )
 {
   if ( nHarmonics_ <= 0 ) {
-    unsigned int maxHarmonics = (unsigned int) floor( 0.5 * p_ );
+    unsigned int maxHarmonics = (unsigned int) _floor( 0.5 * p_ );
     m_ = 2 * maxHarmonics + 1;
   }
   else

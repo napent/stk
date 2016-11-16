@@ -18,7 +18,6 @@
 
 #include "Whistle.h"
 #include "SKINImsg.h"
-#include <cmath>
 
 namespace stk {
 
@@ -155,7 +154,7 @@ StkFloat Whistle :: tick( unsigned int )
       pea_.tick( tickSize_ );
     }
 
-    mod  = exp(-temp * 0.01);	  // exp. distance falloff of fipple/pea effect
+    mod  = _exp(-temp * 0.01);	  // exp. distance falloff of fipple/pea effect
     temp = onepole_.tick(mod);	// smooth it a little
     gain = (1.0 - (fippleGainMod_*0.5)) + (2.0 * fippleGainMod_ * temp);
     gain *= gain;	              // squared distance/gain
@@ -175,10 +174,10 @@ StkFloat Whistle :: tick( unsigned int )
       pea_.getVelocity( &tempVector_ );  // This is the can/pea collision
       tempX = tempVectorP_->getX();     // calculation.  Could probably
       tempY = tempVectorP_->getY();     // simplify using tables, etc.
-      phi = -atan2(tempY,tempX);
+      phi = -_atan2(tempY,tempX);
 
-      cosphi = cos(phi);
-      sinphi = sin(phi);
+      cosphi = _cos(phi);
+      sinphi = _sin(phi);
       temp1 = (cosphi*tempVector_.getX()) - (sinphi*tempVector_.getY());
       temp2 = (sinphi*tempVector_.getX()) + (cosphi*tempVector_.getY());
       temp1 = -temp1;
@@ -194,10 +193,10 @@ StkFloat Whistle :: tick( unsigned int )
     if (temp > 0.01) {
       tempX = tempVectorP_->getX();
       tempY = tempVectorP_->getY();
-      phi = atan2( tempY, tempX );
+      phi = _atan2( tempY, tempX );
       phi += 0.3 * temp / CAN_RADIUS;
-      cosphi = cos(phi);
-      sinphi = sin(phi);
+      cosphi = _cos(phi);
+      sinphi = _sin(phi);
       tempX = 3.0 * temp * cosphi;
       tempY = 3.0 * temp * sinphi;
     }

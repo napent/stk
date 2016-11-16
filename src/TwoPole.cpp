@@ -11,7 +11,6 @@
 /***************************************************/
 
 #include "TwoPole.h"
-#include <cmath>
 
 namespace stk {
 
@@ -54,13 +53,13 @@ void TwoPole :: setResonance( StkFloat frequency, StkFloat radius, bool normaliz
 #endif
 
   a_[2] = radius * radius;
-  a_[1] = (StkFloat) -2.0 * radius * cos(TWO_PI * frequency / Stk::sampleRate());
+  a_[1] = (StkFloat) -2.0 * radius * _cos(TWO_PI * frequency / Stk::sampleRate());
 
   if ( normalize ) {
     // Normalize the filter gain ... not terribly efficient.
-    StkFloat real = 1 - radius + (a_[2] - radius) * cos(TWO_PI * 2 * frequency / Stk::sampleRate());
-    StkFloat imag = (a_[2] - radius) * sin(TWO_PI * 2 * frequency / Stk::sampleRate());
-    b_[0] = sqrt( pow(real, 2) + pow(imag, 2) );
+    StkFloat real = 1 - radius + (a_[2] - radius) * _cos(TWO_PI * 2 * frequency / Stk::sampleRate());
+    StkFloat imag = (a_[2] - radius) * _sin(TWO_PI * 2 * frequency / Stk::sampleRate());
+    b_[0] = _sqrt( _pow(real, 2) + _pow(imag, 2) );
   }
 }
 

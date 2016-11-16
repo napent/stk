@@ -24,7 +24,6 @@
 /***************************************************/
 
 #include "Voicer.h"
-#include <cmath>
 
 namespace stk {
 
@@ -86,7 +85,7 @@ void Voicer :: removeInstrument( Instrmnt *instrument )
 long Voicer :: noteOn(StkFloat noteNumber, StkFloat amplitude, int group )
 {
   unsigned int i;
-  StkFloat frequency = (StkFloat) 220.0 * pow( 2.0, (noteNumber - 57.0) / 12.0 );
+  StkFloat frequency = (StkFloat) 220.0 * _pow( 2.0, (noteNumber - 57.0) / 12.0 );
   for ( i=0; i<voices_.size(); i++ ) {
     if (voices_[i].noteNumber < 0 && voices_[i].group == group) {
       voices_[i].tag = tags_++;
@@ -144,7 +143,7 @@ void Voicer :: noteOff( long tag, StkFloat amplitude )
 
 void Voicer :: setFrequency( StkFloat noteNumber, int group )
 {
-  StkFloat frequency = (StkFloat) 220.0 * pow( 2.0, (noteNumber - 57.0) / 12.0 );
+  StkFloat frequency = (StkFloat) 220.0 * _pow( 2.0, (noteNumber - 57.0) / 12.0 );
   for ( unsigned int i=0; i<voices_.size(); i++ ) {
     if ( voices_[i].group == group ) {
       voices_[i].noteNumber = noteNumber;
@@ -156,7 +155,7 @@ void Voicer :: setFrequency( StkFloat noteNumber, int group )
 
 void Voicer :: setFrequency( long tag, StkFloat noteNumber )
 {
-  StkFloat frequency = (StkFloat) 220.0 * pow( 2.0, (noteNumber - 57.0) / 12.0 );
+  StkFloat frequency = (StkFloat) 220.0 * _pow( 2.0, (noteNumber - 57.0) / 12.0 );
   for ( unsigned int i=0; i<voices_.size(); i++ ) {
     if ( voices_[i].tag == tag ) {
       voices_[i].noteNumber = noteNumber;
@@ -171,9 +170,9 @@ void Voicer :: pitchBend( StkFloat value, int group )
 {
   StkFloat pitchScaler;
   if ( value < 8192.0 )
-    pitchScaler = pow( 0.5, (8192.0-value) / 8192.0 );
+    pitchScaler = _pow( 0.5, (8192.0-value) / 8192.0 );
   else
-    pitchScaler = pow( 2.0, (value-8192.0) / 8192.0 );
+    pitchScaler = _pow( 2.0, (value-8192.0) / 8192.0 );
   for ( unsigned int i=0; i<voices_.size(); i++ ) {
     if ( voices_[i].group == group )
       voices_[i].instrument->setFrequency( (StkFloat) (voices_[i].frequency * pitchScaler) );
@@ -184,9 +183,9 @@ void Voicer :: pitchBend( long tag, StkFloat value )
 {
   StkFloat pitchScaler;
   if ( value < 8192.0 )
-    pitchScaler = pow( 0.5, (8192.0-value) / 8192.0 );
+    pitchScaler = _pow( 0.5, (8192.0-value) / 8192.0 );
   else
-    pitchScaler = pow( 2.0, (value-8192.0) / 8192.0 );
+    pitchScaler = _pow( 2.0, (value-8192.0) / 8192.0 );
   for ( unsigned int i=0; i<voices_.size(); i++ ) {
     if ( voices_[i].tag == tag ) {
       voices_[i].instrument->setFrequency( (StkFloat) (voices_[i].frequency * pitchScaler) );

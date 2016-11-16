@@ -2453,7 +2453,7 @@ struct JackMidiData {
 //  Class Definitions: MidiInJack
 //*********************************************************************//
 
-static int jackProcessIn( jack_nframes_t nframes, void *arg )
+static int jackProces_sin( jack_nframes_t nframes, void *arg )
 {
   JackMidiData *jData = (JackMidiData *) arg;
   MidiInApi :: RtMidiInData *rtData = jData->rtMidiIn;

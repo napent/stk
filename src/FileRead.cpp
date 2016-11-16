@@ -35,7 +35,6 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <cstring>
-#include <cmath>
 #include <cstdio>
 
 namespace stk {
@@ -689,7 +688,7 @@ bool FileRead :: getMatInfo( const char *fileName )
       if ( nametype == 1 ) { // array name > 4 characters
         if ( fread(&namesize, 4, 1, fd_) != 1 ) goto error;
         if ( byteswap_ ) swap32((unsigned char *)&namesize);
-        namesize = (SINT32) ceil((float)namesize / 8);
+        namesize = (SINT32) _ceil((float)namesize / 8);
         if ( fseek( fd_, namesize*8, SEEK_CUR) == -1 ) goto error;  // jump over array name
       }
       else {

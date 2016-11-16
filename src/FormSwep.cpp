@@ -11,7 +11,6 @@
 /***************************************************/
 
 #include "FormSwep.h"
-#include <cmath>
 
 namespace stk {
 
@@ -68,7 +67,7 @@ void FormSwep :: setResonance( StkFloat frequency, StkFloat radius )
   frequency_ = frequency;
 
   a_[2] = radius * radius;
-  a_[1] = -2.0 * radius * cos( TWO_PI * frequency / Stk::sampleRate() );
+  a_[1] = -2.0 * radius * _cos( TWO_PI * frequency / Stk::sampleRate() );
 
   // Use zeros at +- 1 and normalize the filter peak gain.
   b_[0] = 0.5 - 0.5 * a_[2];

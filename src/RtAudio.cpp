@@ -1087,7 +1087,7 @@ bool RtApiCore :: probeDeviceOpen( unsigned int device, StreamMode mode, unsigne
   }
 
   // Only change the sample rate if off by more than 1 Hz.
-  if ( fabs( nominalRate - (double)sampleRate ) > 1.0 ) {
+  if ( _fabs( nominalRate - (double)sampleRate ) > 1.0 ) {
 
     // Set a property listener for the sample rate change
     Float64 reportedRate = 0.0;
@@ -1142,7 +1142,7 @@ bool RtApiCore :: probeDeviceOpen( unsigned int device, StreamMode mode, unsigne
   // change if the sample rate is not within 1.0 of the desired
   // rate and the format is not linear pcm.
   bool updateFormat = false;
-  if ( fabs( description.mSampleRate - (Float64)sampleRate ) > 1.0 ) {
+  if ( _fabs( description.mSampleRate - (Float64)sampleRate ) > 1.0 ) {
     description.mSampleRate = (Float64) sampleRate;
     updateFormat = true;
   }

@@ -44,7 +44,6 @@
 #include <signal.h>
 #include <iostream>
 #include <algorithm>
-#include <cmath>
 using std::min;
 
 bool done;

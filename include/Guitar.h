@@ -146,9 +146,9 @@ inline StkFloat Guitar :: tick( StkFloat input )
       output += strings_[i].tick( temp );
       // Check if string energy has decayed sufficiently to turn it off.
       if ( stringState_[i] == 1 ) {
-        if ( fabs( strings_[i].lastOut() ) < 0.001 ) decayCounter_[i]++;
+        if ( _fabs( strings_[i].lastOut() ) < 0.001 ) decayCounter_[i]++;
         else decayCounter_[i] = 0;
-        if ( decayCounter_[i] > (unsigned int) floor( 0.1 * Stk::sampleRate() ) ) {
+        if ( decayCounter_[i] > (unsigned int) _floor( 0.1 * Stk::sampleRate() ) ) {
           stringState_[i] = 0;
           decayCounter_[i] = 0;
         }

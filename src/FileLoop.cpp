@@ -17,7 +17,6 @@
 /***************************************************/
 
 #include "FileLoop.h"
-#include <cmath>
 
 namespace stk {
 
@@ -93,7 +92,7 @@ void FileLoop :: setRate( StkFloat rate )
 {
   rate_ = rate;
 
-  if ( fmod( rate_, 1.0 ) != 0.0 ) interpolate_ = true;
+  if ( _fmod( rate_, 1.0 ) != 0.0 ) interpolate_ = true;
   else interpolate_ = false;
 }
 

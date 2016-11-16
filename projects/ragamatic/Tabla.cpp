@@ -13,7 +13,6 @@
 /***************************************************/
 
 #include "Tabla.h"
-#include <cmath>
 #include <sstream>
 
 namespace stk {

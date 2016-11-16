@@ -17,7 +17,6 @@
 
 #include "Granulate.h"
 #include "FileRead.h"
-#include <cmath>
 
 namespace stk {
 
@@ -190,7 +189,7 @@ void Granulate :: calculateGrain( Granulate::Grain& grain )
 
   // Calculate offset parameter.
   seconds = gOffset_ * 0.001;
-  seconds += ( seconds * gRandomFactor_ * std::abs( noise.tick() ) );
+  seconds += ( seconds * gRandomFactor_ * abs( noise.tick() ) );
   int offset = (int) ( seconds * Stk::sampleRate() );
 
   // Add some randomization to the pointer start position.

@@ -3,7 +3,6 @@
 
 #include "Stk.h"
 #include <vector>
-#include <cmath>
 
 namespace stk {
 
@@ -26,7 +25,7 @@ public:
   Filter( void ) { gain_ = 1.0; channelsIn_ = 1; lastFrame_.resize( 1, 1, 0.0 ); };
 
   //! Return the number of input channels for the class.
-  unsigned int channelsIn( void ) const { return channelsIn_; };
+  unsigned int channel_sin( void ) const { return channelsIn_; };
 
   //! Return the number of output channels for the class.
   unsigned int channelsOut( void ) const { return lastFrame_.channels(); };
@@ -100,22 +99,22 @@ inline StkFloat Filter :: phaseDelay( StkFloat frequency )
   StkFloat omegaT = 2 * PI * frequency / Stk::sampleRate();
   StkFloat real = 0.0, imag = 0.0;
   for ( unsigned int i=0; i<b_.size(); i++ ) {
-    real += b_[i] * std::cos( i * omegaT );
-    imag -= b_[i] * std::sin( i * omegaT );
+    real += b_[i] * _cos( i * omegaT );
+    imag -= b_[i] * _sin( i * omegaT );
   }
   real *= gain_;
   imag *= gain_;
 
-  StkFloat phase = atan2( imag, real );
+  StkFloat phase = _atan2( imag, real );
 
   real = 0.0, imag = 0.0;
   for ( unsigned int i=0; i<a_.size(); i++ ) {
-    real += a_[i] * std::cos( i * omegaT );
-    imag -= a_[i] * std::sin( i * omegaT );
+    real += a_[i] * _cos( i * omegaT );
+    imag -= a_[i] * _sin( i * omegaT );
   }
 
-  phase -= std::atan2( imag, real );
-  phase = std::fmod( -phase, 2 * PI );
+  phase -= _atan2( imag, real );
+  phase = _fmod( -phase, 2 * PI );
   return phase / omegaT;
 }
 

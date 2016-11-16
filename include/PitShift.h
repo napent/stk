@@ -87,7 +87,7 @@ inline StkFloat PitShift :: tick( StkFloat input )
   delayLine_[1].setDelay( delay_[1] );
 
   // Calculate a triangular envelope.
-  env_[1] = fabs( ( delay_[0] - halfLength_ + 12 ) * ( 1.0 / (halfLength_ + 12 ) ) );
+  env_[1] = _fabs( ( delay_[0] - halfLength_ + 12 ) * ( 1.0 / (halfLength_ + 12 ) ) );
   env_[0] = 1.0 - env_[1];
 
   // Delay input and apply envelope.

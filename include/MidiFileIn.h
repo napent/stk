@@ -68,7 +68,7 @@ class MidiFileIn : public Stk
       invalid track number is specified, an StkError exception will be
       thrown.
   */   
-  double getTickSeconds( unsigned int track = 0 );
+  StkFloat getTickSeconds( unsigned int track = 0 );
 
   //! Fill the user-provided vector with the next event in the specified track and return the event delta-time in ticks.
   /*!
@@ -123,7 +123,7 @@ class MidiFileIn : public Stk
   // parameter for formats 0 and 2).
   struct TempoChange { 
     unsigned long count;
-    double tickSeconds;
+    StkFloat tickSeconds;
   };
   std::vector<TempoChange> tempoEvents_;
   std::vector<unsigned long> trackCounters_;

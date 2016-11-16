@@ -13,7 +13,6 @@
 /***************************************************/
 
 #include "VoicDrum.h"
-#include <cmath>
 
 namespace stk {
 

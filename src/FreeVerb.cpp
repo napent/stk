@@ -15,7 +15,6 @@
 /***********************************************************************/
 
 #include "FreeVerb.h"
-#include <cmath>
 #include <iostream>
 
 using namespace stk;
@@ -51,12 +50,12 @@ FreeVerb::FreeVerb( void )
   if ( fsScale != 1.0 ) {
     // scale comb filter delay lines
     for ( int i = 0; i < nCombs; i++ ) {
-      cDelayLengths[i] = (int) floor(fsScale * cDelayLengths[i]);
+      cDelayLengths[i] = (int) _floor(fsScale * cDelayLengths[i]);
     }
 
     // Scale allpass filter delay lines
     for ( int i = 0; i < nAllpasses; i++ ) {
-      aDelayLengths[i] = (int) floor(fsScale * aDelayLengths[i]);
+      aDelayLengths[i] = (int) _floor(fsScale * aDelayLengths[i]);
     }
   }
 

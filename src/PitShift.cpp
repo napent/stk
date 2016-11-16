@@ -10,7 +10,6 @@
 /***************************************************/
 
 #include "PitShift.h"
-#include <cmath>
 
 namespace stk {
 

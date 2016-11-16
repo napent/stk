@@ -654,7 +654,7 @@ void Shakers :: setType( int type )
   sndLevel_ = 0.0;
   nObjects_ = baseObjects_;
   systemDecay_ = baseDecay_;
-  currentGain_ = log( nObjects_ ) * baseGain_ / nObjects_;
+  currentGain_ = _log( nObjects_ ) * baseGain_ / nObjects_;
 
   for ( unsigned int i=0; i<nResonances_; i++ )
     setResonance( filters_[i], baseFrequencies_[i], baseRadii_[i] );
@@ -665,7 +665,7 @@ const StkFloat MAX_SHAKE = 1.0;
 void Shakers :: noteOn( StkFloat frequency, StkFloat amplitude )
 {
   // Yep ... pretty kludgey, but it works!
-  int noteNumber = (int) ((12 * log(frequency/220.0)/log(2.0)) + 57.01) % 32;
+  int noteNumber = (int) ((12 * _log(frequency/220.0)/_log(2.0)) + 57.01) % 32;
   if ( shakerType_ != noteNumber ) this->setType( noteNumber );
 
   shakeEnergy_ += amplitude * MAX_SHAKE * 0.1;
@@ -692,7 +692,7 @@ void Shakers :: controlChange( int number, StkFloat value )
   if ( number == __SK_Breath_ || number == __SK_AfterTouch_Cont_ ) { // 2 or 128 ... energy
     if ( shakerType_ == 19 || shakerType_ == 20 ) {
       if ( lastRatchetValue_ < 0.0 ) ratchetCount_++;
-      else ratchetCount_ = (int) fabs(value - lastRatchetValue_);
+      else ratchetCount_ = (int) _fabs(value - lastRatchetValue_);
       ratchetDelta_ = baseRatchetDelta_ * ratchetCount_;
       lastRatchetValue_ = (int) value;
     }
@@ -706,11 +706,11 @@ void Shakers :: controlChange( int number, StkFloat value )
   }
   else if ( number == __SK_FootControl_ ) { // 11 ... number of objects
     nObjects_ = (StkFloat) ( 2.0 * normalizedValue * baseObjects_ ) + 1.1;
-    currentGain_ = log( nObjects_ ) * baseGain_ / nObjects_;
+    currentGain_ = _log( nObjects_ ) * baseGain_ / nObjects_;
   }
   else if ( number == __SK_ModWheel_ ) { // 1 ... resonance frequency
     for ( unsigned int i=0; i<nResonances_; i++ ) {
-      StkFloat temp = baseFrequencies_[i] * pow( 4.0, normalizedValue-0.5 );
+      StkFloat temp = baseFrequencies_[i] * _pow( 4.0, normalizedValue-0.5 );
       setResonance( filters_[i], temp, baseRadii_[i] );
     }
   }

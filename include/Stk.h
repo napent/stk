@@ -7,6 +7,8 @@
 #include <sstream>
 #include <vector>
 //#include <cstdlib>
+//#include "alax-math/alax-math.h"
+#include <cmath>
 
 /*! \namespace stk
     \brief The STK namespace.
@@ -14,6 +16,10 @@
     Most Stk classes are defined within the STK namespace.  Exceptions
     to this include the classes RtAudio and RtMidi.
 */
+
+
+
+
 namespace stk {
 
 /***************************************************/
@@ -587,6 +593,95 @@ const StkFloat ONE_OVER_128 = 0.0078125;
   #define __STK_REALTIME__
 #endif
 
+inline StkFloat fast_sin(StkFloat x);
+
+inline StkFloat _sin(StkFloat in)
+{
+	return fast_sin(in);
+}
+
+inline StkFloat _cos(StkFloat in)
+{
+	return std::cos(in);
+}
+
+inline StkFloat _exp(StkFloat in)
+{
+	return std::exp(in);
+}
+
+inline StkFloat _atan2(StkFloat in,StkFloat in2)
+{
+	return std::atan2(in,in2);
+}
+
+inline StkFloat _pow(StkFloat in,StkFloat in2)
+{
+	return std::pow(in,in2);
+}
+
+inline StkFloat _fmod(StkFloat in,StkFloat in2)
+{
+	return std::fmod(in,in2);
+}
+
+inline StkFloat _fabs(StkFloat in)
+{
+	return std::fabs(in);
+}
+
+inline StkFloat _log(StkFloat in)
+{
+	return std::log(in);
+}
+
+inline StkFloat _floor(StkFloat in)
+{
+	return std::floor(in);
+}
+
+inline StkFloat _sqrt(StkFloat in)
+{
+	return std::sqrt(in);
+}
+
+inline StkFloat _ceil(StkFloat in)
+{
+	return std::ceil(in);
+}
+
+
+StkFloat fast_sin(StkFloat x) {
+	int k;
+	StkFloat y;
+	StkFloat z;
+
+	z  = x;
+	z *= 0.3183098861837907;
+	z += 6755399441055744.0;
+	k  = *((int *) &z);
+	z  = k;
+	z *= 3.1415926535897932;
+	x -= z;
+	y  = x;
+	y *= x;
+	z  = 0.0073524681968701;
+	z *= y;
+	z -= 0.1652891139701474;
+	z *= y;
+	z += 0.9996919862959676;
+	x *= z;
+	k &= 1;
+	k += k;
+	z  = k;
+	z *= x;
+	x -= z;
+
+	return x;
+}
+
+
 } // stk namespace
+
 
 #endif

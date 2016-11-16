@@ -11,7 +11,6 @@
 /***************************************************/
 
 #include "TwoZero.h"
-#include <cmath>
 
 namespace stk {
 
@@ -60,7 +59,7 @@ void TwoZero :: setNotch( StkFloat frequency, StkFloat radius )
 #endif
 
   b_[2] = radius * radius;
-  b_[1] = -2.0 * radius * cos(TWO_PI * frequency / Stk::sampleRate());
+  b_[1] = -2.0 * radius * _cos(TWO_PI * frequency / Stk::sampleRate());
 
   // Normalize the filter gain.
   if ( b_[1] > 0.0 ) // Maximum at z = 0.

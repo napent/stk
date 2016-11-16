@@ -22,7 +22,6 @@
 
 #include "Brass.h"
 #include "SKINImsg.h"
-#include <cmath>
 
 namespace stk {
 
@@ -136,7 +135,7 @@ void Brass :: controlChange( int number, StkFloat value )
 
   StkFloat normalizedValue = value * ONE_OVER_128;
   if (number == __SK_LipTension_)	{ // 2
-    StkFloat temp = lipTarget_ * pow( 4.0, (2.0 * normalizedValue) - 1.0 );
+    StkFloat temp = lipTarget_ * _pow( 4.0, (2.0 * normalizedValue) - 1.0 );
     this->setLip( temp );
   }
   else if (number == __SK_SlideLength_) // 4

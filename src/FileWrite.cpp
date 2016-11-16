@@ -25,7 +25,6 @@
 #include <string>
 #include <cstdio>
 #include <cstring>
-#include <cmath>
 
 namespace stk {
 
@@ -648,7 +647,7 @@ bool FileWrite :: setMatFile( std::string fileName )
   if ( namelength > 4 ) {
     if ( fwrite(&namelength, 4, 1, fd_) != 1) goto error;
     if ( fwrite(name.c_str(), namelength, 1, fd_) != 1 ) goto error;
-    tmp = (SINT32) ceil((float)namelength / 8);
+    tmp = (SINT32) _ceil((float)namelength / 8);
     if ( fseek(fd_, tmp*8-namelength, SEEK_CUR) == -1 ) goto error;
     headsize += tmp * 8;
   }

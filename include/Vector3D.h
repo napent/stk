@@ -2,7 +2,6 @@
 #define STK_VECTOR3D_H
 
 #include "Stk.h"
-#include <cmath>
 
 namespace stk {
 
@@ -59,7 +58,7 @@ inline StkFloat Vector3D :: getLength( void )
   temp = X_ * X_;
   temp += Y_ * Y_;
   temp += Z_ * Z_;
-  temp = sqrt( temp );
+  temp = _sqrt( temp );
   return temp;
 }
 

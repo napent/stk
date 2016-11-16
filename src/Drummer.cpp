@@ -16,7 +16,6 @@
 /***************************************************/
 
 #include "Drummer.h"
-#include <cmath>
 
 namespace stk {
 
@@ -75,7 +74,7 @@ void Drummer :: noteOn( StkFloat instrument, StkFloat amplitude )
   }
 
   // Yes, this is tres kludgey.
-  int noteNumber = (int) ( ( 12 * log( instrument / 220.0 ) / log( 2.0 ) ) + 57.01 );
+  int noteNumber = (int) ( ( 12 * _log( instrument / 220.0 ) / _log( 2.0 ) ) + 57.01 );
 
   // If we already have a wave of this note number loaded, just reset
   // it.  Otherwise, look first for an unused wave or preempt the
