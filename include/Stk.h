@@ -593,11 +593,9 @@ const StkFloat ONE_OVER_128 = 0.0078125;
   #define __STK_REALTIME__
 #endif
 
-inline StkFloat fast_sin(StkFloat x);
-
 inline StkFloat _sin(StkFloat in)
 {
-	return fast_sin(in);
+	return std::sin(in);
 }
 
 inline StkFloat _cos(StkFloat in)
@@ -655,35 +653,6 @@ inline StkFloat _ceil(StkFloat in)
 	return std::ceil(in);
 }
 
-
-StkFloat fast_sin(StkFloat x) {
-	int k;
-	StkFloat y;
-	StkFloat z;
-
-	z  = x;
-	z *= 0.3183098861837907;
-	z += 6755399441055744.0;
-	k  = *((int *) &z);
-	z  = k;
-	z *= 3.1415926535897932;
-	x -= z;
-	y  = x;
-	y *= x;
-	z  = 0.0073524681968701;
-	z *= y;
-	z -= 0.1652891139701474;
-	z *= y;
-	z += 0.9996919862959676;
-	x *= z;
-	k &= 1;
-	k += k;
-	z  = k;
-	z *= x;
-	x -= z;
-
-	return x;
-}
 
 
 } // stk namespace
