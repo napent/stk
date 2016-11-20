@@ -177,7 +177,7 @@ void MidiFileIn :: rewindTrack( unsigned int track )
   tickSeconds_[track] = tempoEvents_[0].tickSeconds;
 }
 
-double MidiFileIn :: getTickSeconds( unsigned int track )
+StkFloat MidiFileIn :: getTickSeconds( unsigned int track )
 {
   // Return the current tick value in seconds for the given track.
   if ( track >= nTracks_ ) {

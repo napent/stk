@@ -100,7 +100,7 @@ fi
 CPPFLAGS="$CPPFLAGS $cppflag"
 
 # For debugging and optimization ... overwrite default because it has both -g and -O2
-CXXFLAGS="$CXXFLAGS $cxxflag"
+CXXFLAGS="$cxxflag -mcpu=cortex-a7 -mfpu=neon-vfpv4 -ftree-vectorize -mfloat-abi=hard -ffast-math -fsingle-precision-constant"
 
 # Check compiler and use -Wall if gnu.
 if [test $GXX = "yes" ;] then
